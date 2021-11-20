@@ -1,12 +1,8 @@
 import { useColorMode } from "@chakra-ui/color-mode";
 import { Box, Flex, Text } from "@chakra-ui/layout";
-import { Button } from "@chakra-ui/react";
-import React from "react";
-import { FaGithub } from "react-icons/fa";
+import { Image } from "@chakra-ui/react";
 
 import { useDesktopWidthCheck } from "../../functions/helpers/desktopWidthChecker";
-
-import DarkModeSwitch from "./DarkModeSwitch";
 
 const HeaderComponent = () => {
   const { colorMode } = useColorMode();
@@ -26,20 +22,17 @@ const HeaderComponent = () => {
         justifyContent="space-between"
         py={2}
         align="center"
-        maxW="48rem"
-        mx="auto"
-        px={isDesktopWidth ? 1 : 3}
+        px={isDesktopWidth ? 2 : 4}
       >
-        <Text as="a" href="/" fontSize="lg">
-          <b>yehez-vitechakra-starter</b>
-        </Text>
+        <Image src="assets/logo-shipper.svg" />
 
-        <Flex gridGap={3} align="center">
-          <Button leftIcon={<FaGithub />} variant="ghost" size="sm">
-            Open in Github
-          </Button>
-
-          <DarkModeSwitch />
+        <Flex gridGap={1} align="center">
+          <Text>Hello, </Text>
+          <Text color="red">Shipper User</Text>
+          <Image
+            boxSize="36px"
+            src="assets/person_icon.png"
+          />
         </Flex>
       </Flex>
     </Box>

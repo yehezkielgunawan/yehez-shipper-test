@@ -1,8 +1,8 @@
 import { extendTheme } from "@chakra-ui/react";
 import { createBreakpoints } from "@chakra-ui/theme-tools";
-import "@fontsource/catamaran";
+import "@fontsource/source-sans-pro";
 
-const fonts = { body: "catamaran" };
+const fonts = { heading: "Source Sans Pro", body: "Source Sans Pro" };
 
 const breakpoints = createBreakpoints({
   sm: "40em",
@@ -14,6 +14,7 @@ const breakpoints = createBreakpoints({
 const theme = extendTheme({
   colors: {
     black: "#16161D",
+    red: "#ef4941",
   },
   fonts,
   breakpoints,
