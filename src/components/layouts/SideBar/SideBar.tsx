@@ -18,7 +18,7 @@ const SideBar = () => {
       display={["none", "block"]}
     >
       <Image
-        src="https://res.cloudinary.com/yehez/image/upload/v1637425601/Shipper/logo-shipper_j3r1pf.svg"
+        src="assets/logo-shipper.svg"
         display={["none", "block"]}
       />
 

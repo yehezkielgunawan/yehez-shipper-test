@@ -43,7 +43,7 @@ const HeaderComponent = ({ onOpen }: HeaderProps) => {
         </Box>
         <Image
           boxSize="36px"
-          src="https://res.cloudinary.com/yehez/image/upload/v1637425557/Shipper/person_icon_aykrqb.png"
+          src="assets/person_icon.png"
         />
       </Flex>
     </Box>
