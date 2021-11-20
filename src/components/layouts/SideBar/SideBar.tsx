@@ -17,7 +17,10 @@ const SideBar = () => {
       px={2}
       display={["none", "block"]}
     >
-      <Image src="assets/logo-shipper.svg" display={["none", "block"]} />
+      <Image
+        src="https://res.cloudinary.com/yehez/image/upload/v1637425601/Shipper/logo-shipper_j3r1pf.svg"
+        display={["none", "block"]}
+      />
 
       {menuList.map((menu, index) => {
         return (
