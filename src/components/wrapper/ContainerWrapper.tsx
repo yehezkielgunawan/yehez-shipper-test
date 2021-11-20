@@ -1,7 +1,9 @@
-import { Flex, useColorMode } from "@chakra-ui/react";
+import { Box, useDisclosure } from "@chakra-ui/react";
 import { ReactNode } from "react";
 
-import FooterComponent from "../layouts/FooterComponent";
+import SideBar from "components/layouts/SideBar/SideBar";
+import SideDrawer from "components/layouts/SideBar/SideDrawer";
+
 import HeaderComponent from "../layouts/HeaderComponent";
 
 type ContainerProps = {
@@ -9,20 +11,14 @@ type ContainerProps = {
 };
 
 const ContainerWrapper = ({ children }: ContainerProps) => {
-  const { colorMode } = useColorMode();
-
-  const color = { light: "black", dark: "white" };
+  const { onOpen, isOpen, onClose } = useDisclosure();
   return (
-    <Flex
-      direction="column"
-      alignItems="center"
-      justifyContent="flex-start"
-      color={color[colorMode]}
-    >
-      <HeaderComponent />
-      {children}
-      <FooterComponent />
-    </Flex>
+    <Box>
+      <SideBar />
+      <SideDrawer isOpen={isOpen} onClose={onClose} />
+      <HeaderComponent onOpen={onOpen} />
+      <Box marginLeft={[0, 300]}>{children}</Box>
+    </Box>
   );
 };
 

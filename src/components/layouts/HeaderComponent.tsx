@@ -1,39 +1,47 @@
-import { useColorMode } from "@chakra-ui/color-mode";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import { Box, Flex, Text } from "@chakra-ui/layout";
-import { Image } from "@chakra-ui/react";
+import { IconButton, Image } from "@chakra-ui/react";
 
-import { useDesktopWidthCheck } from "../../functions/helpers/desktopWidthChecker";
+type HeaderProps = {
+  onOpen: () => void;
+};
 
-const HeaderComponent = () => {
-  const { colorMode } = useColorMode();
-  const isDesktopWidth = useDesktopWidthCheck();
+const HeaderComponent = ({ onOpen }: HeaderProps) => {
   return (
     <Box
-      justifyContent="start"
-      bg={colorMode === "light" ? "white" : "gray.700"}
+      justifyContent={["space-between", "end"]}
+      alignItems="center"
+      py={[0, 2]}
+      px={[4, 2]}
+      bg="white"
       position="fixed"
       width="100%"
       opacity="0.95"
       top={0}
-      zIndex={5}
+      zIndex={2}
       transition="0.3s ease-out"
+      display="flex"
     >
-      <Flex
-        justifyContent="space-between"
-        py={2}
-        align="center"
-        px={isDesktopWidth ? 2 : 4}
-      >
-        <Image src="assets/logo-shipper.svg" />
+      <Flex align="center" display={["flex", "none"]}>
+        <IconButton
+          aria-label="menu"
+          variant="ghost"
+          icon={<HamburgerIcon />}
+          onClick={onOpen}
+        />
+        <Image
+          objectFit="contain"
+          boxSize="72px"
+          src="assets/logo-shipper.svg"
+        />
+      </Flex>
 
-        <Flex gridGap={1} align="center">
+      <Flex justify="end" align="center" gridGap={1}>
+        <Box display={["none", "flex"]} gridGap={1}>
           <Text>Hello, </Text>
           <Text color="red">Shipper User</Text>
-          <Image
-            boxSize="36px"
-            src="assets/person_icon.png"
-          />
-        </Flex>
+        </Box>
+        <Image boxSize="36px" src="assets/person_icon.png" />
       </Flex>
     </Box>
   );

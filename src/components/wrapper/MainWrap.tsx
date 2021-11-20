@@ -1,25 +1,15 @@
-import { Stack } from "@chakra-ui/layout";
-import React, { ReactNode } from "react";
-
-import { useDesktopWidthCheck } from "../../functions/helpers/desktopWidthChecker";
+import { Box } from "@chakra-ui/layout";
+import { ReactNode } from "react";
 
 type MainProps = {
   children: ReactNode;
 };
 
 const MainWrap = ({ children }: MainProps) => {
-  const isDesktopWidth = useDesktopWidthCheck();
   return (
-    <Stack
-      width="100%"
-      maxWidth="48rem"
-      pt="4rem"
-      px={isDesktopWidth ? 1 : 3}
-      mt={8}
-      spacing={4}
-    >
+    <Box as="main" bgColor="gray.50" height="100vh" px={[3, 1]} py={16} my={4}>
       {children}
-    </Stack>
+    </Box>
   );
 };
 
