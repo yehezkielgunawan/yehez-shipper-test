@@ -17,7 +17,7 @@ const SideBar = () => {
       zIndex={5}
       py={2}
       px={2}
-      display={["none", "block"]}
+      display={["none", "none", "block"]}
     >
       <Image src="assets/logo-shipper.svg" display={["none", "block"]} />
 

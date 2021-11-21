@@ -9,10 +9,10 @@ type HeaderProps = {
 const HeaderComponent = ({ onOpen }: HeaderProps) => {
   return (
     <Box
-      justifyContent={["space-between", "end"]}
+      justifyContent={["space-between", "space-between", "end"]}
       alignItems="center"
-      py={[0, 2]}
-      px={[4, 2]}
+      py={[0, 0, 2]}
+      px={[4, 4,  2]}
       bg="white"
       position="fixed"
       width="100%"
@@ -22,7 +22,7 @@ const HeaderComponent = ({ onOpen }: HeaderProps) => {
       transition="0.3s ease-out"
       display="flex"
     >
-      <Flex align="center" display={["flex", "none"]}>
+      <Flex align="center" display={["flex", "flex", "none"]}>
         <IconButton
           aria-label="menu"
           variant="ghost"
@@ -37,14 +37,11 @@ const HeaderComponent = ({ onOpen }: HeaderProps) => {
       </Flex>
 
       <Flex justify="end" align="center" gridGap={1}>
-        <Box display={["none", "flex"]} gridGap={1}>
+        <Box display={["none", "none","flex"]} gridGap={1}>
           <Text>Hello, </Text>
           <Text color="red">Shipper User</Text>
         </Box>
-        <Image
-          boxSize="36px"
-          src="assets/person_icon.png"
-        />
+        <Image boxSize="36px" src="assets/person_icon.png" />
       </Flex>
     </Box>
   );
