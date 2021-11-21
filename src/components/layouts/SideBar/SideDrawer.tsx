@@ -7,6 +7,7 @@ import {
   Icon,
   Text,
 } from "@chakra-ui/react";
+import { Link, useLocation } from "react-router-dom";
 
 import { menuList } from "constants/menuList";
 
@@ -16,6 +17,7 @@ type SideDrawerProps = {
 };
 
 const SideDrawer = ({ isOpen, onClose }: SideDrawerProps) => {
+  const currentLoc = useLocation();
   return (
     <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
       {<DrawerOverlay />}
@@ -25,17 +27,20 @@ const SideDrawer = ({ isOpen, onClose }: SideDrawerProps) => {
           {" "}
           {menuList.map((menu, index) => {
             return (
-              <Flex
-                key={index}
-                align="center"
-                gridGap={2}
-                my={10}
-                _hover={{ color: "red" }}
-                px={4}
-              >
-                <Icon as={menu.icon} />
-                <Text>{menu.label}</Text>
-              </Flex>
+              <Link key={index} to={menu.route}>
+                <Flex
+                  align="center"
+                  gridGap={2}
+                  my={10}
+                  _hover={{ color: "red" }}
+                  px={4}
+                  onClick={onClose}
+                  color={currentLoc.pathname === menu.route ? "red" : "black"}
+                >
+                  <Icon as={menu.icon} />
+                  <Text>{menu.label}</Text>
+                </Flex>
+              </Link>
             );
           })}
         </DrawerBody>

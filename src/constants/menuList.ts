@@ -17,7 +17,7 @@ export const menuList: Array<MenuType> = [
   },
   {
     label: "Driver Management",
-    route: "/driver-management",
+    route: "/driver",
     icon: IoPersonCircleOutline,
   },
   {
