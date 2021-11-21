@@ -18,17 +18,35 @@ import DriverCard from "./DriverCard";
 
 const DriverComponent = () => {
   const [users, setUsers] = useState<Array<SingleUser>>([]);
+  const [keyword, setKeyword] = useState<string>("");
+  const [usersLength, setUsersLength] = useState<number>(0);
+  const [page, setPage] = useState<number>(1);
 
   useEffect(() => {
     if (!localStorage.getItem("usersData")) {
       getUsers().then((res: Results) => {
         setUsers(res.results);
+        setUsersLength(res.results.length);
         localStorage.setItem("usersData", JSON.stringify(res.results));
       });
     } else {
       setUsers(JSON.parse(localStorage.getItem("usersData") || "[]"));
+      setUsersLength(
+        JSON.parse(localStorage.getItem("usersData") || "[]").length
+      );
     }
   }, []);
+
+  const handleSearchInput = (
+    searchKey: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setUsersLength(
+      users.filter((user) =>
+        user.name.first.toLowerCase().includes(searchKey.target.value)
+      ).length
+    );
+    return setKeyword(searchKey.target.value);
+  };
 
   return (
     <MainWrap>
@@ -55,7 +73,11 @@ const DriverComponent = () => {
                 pointerEvents="none"
                 children={<SearchIcon color="red" />}
               />
-              <Input type="text" placeholder="Cari Driver" />
+              <Input
+                type="text"
+                placeholder="Cari Driver"
+                onChange={handleSearchInput}
+              />
             </InputGroup>
             <Button bg="red" color="white" w={["100%", "100%", 36]}>
               TAMBAH DRIVER +
@@ -64,26 +86,50 @@ const DriverComponent = () => {
         </Box>
 
         <Flex gridGap={8} direction={["column", "row"]} overflowX="scroll">
-          {users.map((user, index) => (
-            <Skeleton isLoaded={user ? true : false} key={index}>
-              <DriverCard
-                uid={user.login.salt}
-                firstName={user.name.first}
-                lastName={user.name.last}
-                phoneNum={user.phone}
-                email={user.email}
-                birthDate={formatDate(user.dob.date, false)}
-                profileImage={user.picture.medium}
-              />
-            </Skeleton>
-          ))}
+          {(keyword.length < 1
+            ? users
+            : users.filter((user) => {
+                return user.name.first.toLowerCase().includes(keyword);
+              })
+          )
+            .map((user, index) => (
+              <Skeleton isLoaded={user ? true : false} key={index}>
+                <DriverCard
+                  uid={user.login.salt}
+                  firstName={user.name.first}
+                  lastName={user.name.last}
+                  phoneNum={user.phone}
+                  email={user.email}
+                  birthDate={formatDate(user.dob.date, false)}
+                  profileImage={user.picture.medium}
+                />
+              </Skeleton>
+            ))
+            .filter(
+              (user, index) => page * 5 - 5 <= index && index < page * 5 && user
+            )}
         </Flex>
 
         <Flex gridGap={4} align="center" justify="center">
-          <Button variant="ghost" leftIcon={<ChevronLeftIcon />}>
+          <Button
+            variant="ghost"
+            leftIcon={<ChevronLeftIcon />}
+            disabled={usersLength <= 5 || page === 1 ? true : false}
+            onClick={() => setPage(page - 1)}
+          >
             Previous Page
           </Button>
-          <Button variant="ghost" rightIcon={<ChevronRightIcon />}>
+
+          <Button
+            variant="ghost"
+            rightIcon={<ChevronRightIcon />}
+            disabled={
+              usersLength <= 5 || usersLength - (page - 1) * 5 <= 5
+                ? true
+                : false
+            }
+            onClick={() => setPage(page + 1)}
+          >
             Next Page
           </Button>
         </Flex>
