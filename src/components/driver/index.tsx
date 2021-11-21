@@ -6,12 +6,30 @@ import {
 } from "@chakra-ui/icons";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/input";
 import { Box, Flex, Heading, Stack, Text } from "@chakra-ui/layout";
+import { Skeleton } from "@chakra-ui/skeleton";
+import { useEffect, useState } from "react";
 
 import MainWrap from "components/wrapper/MainWrap";
+import { formatDate } from "functions/helpers/formatDate";
+import { getUsers } from "functions/services/fetcher";
+import { Results, SingleUser } from "functions/services/types";
 
 import DriverCard from "./DriverCard";
 
 const DriverComponent = () => {
+  const [users, setUsers] = useState<Array<SingleUser>>([]);
+
+  useEffect(() => {
+    if (!localStorage.getItem("usersData")) {
+      getUsers().then((res: Results) => {
+        setUsers(res.results);
+        localStorage.setItem("usersData", JSON.stringify(res.results));
+      });
+    } else {
+      setUsers(JSON.parse(localStorage.getItem("usersData") || "[]"));
+    }
+  }, []);
+
   return (
     <MainWrap>
       <Stack mx={[2, 8]} py={2} spacing={4} overflow="hidden">
@@ -46,42 +64,19 @@ const DriverComponent = () => {
         </Box>
 
         <Flex gridGap={8} direction={["column", "row"]} overflowX="scroll">
-          <DriverCard
-            uid="mxhe8q2w"
-            firstName="Suleyman"
-            lastName="Mayerhofer"
-            phoneNum="08522341234"
-            email="suleyman@gmail.com"
-            birthDate="1980-08-01T02:21:52.767Z"
-            profileImage="https://randomuser.me/api/portraits/med/men/81.jpg"
-          />
-          <DriverCard
-            uid="mxhe8q2w"
-            firstName="Suleyman"
-            lastName="Mayerhofer"
-            phoneNum="08522341234"
-            email="suleyman@gmail.com"
-            birthDate="1980-08-01T02:21:52.767Z"
-            profileImage="https://randomuser.me/api/portraits/med/men/81.jpg"
-          />
-          <DriverCard
-            uid="mxhe8q2w"
-            firstName="Suleyman"
-            lastName="Mayerhofer"
-            phoneNum="08522341234"
-            email="suleyman@gmail.com"
-            birthDate="1980-08-01T02:21:52.767Z"
-            profileImage="https://randomuser.me/api/portraits/med/men/81.jpg"
-          />
-          <DriverCard
-            uid="mxhe8q2w"
-            firstName="Suleyman"
-            lastName="Mayerhofer"
-            phoneNum="08522341234"
-            email="suleyman@gmail.com"
-            birthDate="1980-08-01T02:21:52.767Z"
-            profileImage="https://randomuser.me/api/portraits/med/men/81.jpg"
-          />
+          {users.map((user, index) => (
+            <Skeleton isLoaded={user ? true : false} key={index}>
+              <DriverCard
+                uid={user.login.salt}
+                firstName={user.name.first}
+                lastName={user.name.last}
+                phoneNum={user.phone}
+                email={user.email}
+                birthDate={formatDate(user.dob.date, false)}
+                profileImage={user.picture.medium}
+              />
+            </Skeleton>
+          ))}
         </Flex>
 
         <Flex gridGap={4} align="center" justify="center">

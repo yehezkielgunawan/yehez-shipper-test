@@ -24,6 +24,7 @@ const DriverCard = ({
     <Box
       bg="white"
       minW={["100%", "240px"]}
+      minH={["100%", "450px"]}
       alignItems="center"
       px={4}
       py={4}
