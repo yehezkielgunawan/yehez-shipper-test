@@ -1,3 +1,4 @@
+// Just a helper function to format the Date
 export const formatDate = (date: string | Date, time = true): string => {
   const convertedDate = new Date(date);
   const options: Intl.DateTimeFormatOptions = {

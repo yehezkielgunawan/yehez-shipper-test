@@ -85,6 +85,10 @@ It's just a trial, I just want to try this tool through this project. By the way
 Why I didn't make unit testing?\
 Actually, I ever made unit testing using [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) when I made my own Link Shortener at [link.yehezgun.com](https://link.yehezgun.com/). But it was a [Next.js](https://nextjs.org/) project and it has a very different config style. So I felt very overwhelmed when tried to config the React Testing Library in this project.
 
+Why do I use Chakra UI as the UI Library?\
+Since I re-learned React in June 2021, I re-learned everything especially JS and CSS fundamentals. It's quite challenging because I usually use Angular before and switch to React which contains more JS codes. I am also overwhelmed with CSS things because it's quite complex when I need custom styling.\
+So when I have to work on a technical test mini-project, I prefer to use [Chakra UI](https://chakra-ui.com/) because I can make my own custom styling just using the props. For me, it boosts my productivity while I'm still lacking UI Slicing fundamental skills.
+
 ### A Little About The Code
 
 To avoid the data does not refresh when the page is reloaded, I save the driver list in the local storage. The logic detail can be seen at `src\components\driver\index.tsx`. So the page will check if there is the driver list data in the local storage, the state will use the data from the local storage (not re-fetch the data again from the API).

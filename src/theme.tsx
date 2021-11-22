@@ -2,6 +2,7 @@ import { extendTheme } from "@chakra-ui/react";
 import { createBreakpoints } from "@chakra-ui/theme-tools";
 import "@fontsource/source-sans-pro";
 
+// Just a base Chakra UI Theme
 const fonts = { heading: "Source Sans Pro", body: "Source Sans Pro" };
 
 const breakpoints = createBreakpoints({

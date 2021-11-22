@@ -8,6 +8,7 @@ import { webRoutes } from "routes";
 import ContainerWrapper from "./components/wrapper/ContainerWrapper";
 import theme from "./theme";
 
+// Declare the routing config and chakra provider here
 ReactDOM.render(
   <ChakraProvider theme={theme}>
     <React.StrictMode>

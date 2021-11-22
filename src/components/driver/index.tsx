@@ -16,6 +16,7 @@ import { Results, SingleUser } from "functions/services/types";
 
 import DriverCard from "./DriverCard";
 
+// This is the Driver Management Service Page where the Driver List will be displayed
 const DriverComponent = () => {
   const [users, setUsers] = useState<Array<SingleUser>>([]);
   const [keyword, setKeyword] = useState<string>("");

@@ -10,6 +10,7 @@ type ContainerProps = {
   children: ReactNode;
 };
 
+// This is the main Container Wrapper to wrap the pages
 const ContainerWrapper = ({ children }: ContainerProps) => {
   const { onOpen, isOpen, onClose } = useDisclosure();
   return (

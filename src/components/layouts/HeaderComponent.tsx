@@ -6,6 +6,7 @@ type HeaderProps = {
   onOpen: () => void;
 };
 
+// This is the header component, I set the fixed position to keep it sticky at the top
 const HeaderComponent = ({ onOpen }: HeaderProps) => {
   return (
     <Box

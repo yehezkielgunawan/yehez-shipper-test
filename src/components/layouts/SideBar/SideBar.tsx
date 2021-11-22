@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import { menuList } from "constants/menuList";
 
+// This Side Bar component will be rendered if opened through the PC browsers
 const SideBar = () => {
   const currentLoc = useLocation();
   return (

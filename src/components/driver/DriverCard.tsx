@@ -11,6 +11,7 @@ type DriverProps = {
   profileImage: string;
 };
 
+// This component is used to temp the driver data
 const DriverCard = ({
   uid,
   firstName,

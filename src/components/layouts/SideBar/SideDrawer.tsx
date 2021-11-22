@@ -16,6 +16,7 @@ type SideDrawerProps = {
   onClose: () => void;
 };
 
+// This Side Drawer component will be rendered if opened through the mobile device
 const SideDrawer = ({ isOpen, onClose }: SideDrawerProps) => {
   const currentLoc = useLocation();
   return (

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import MainWrap from "components/wrapper/MainWrap";
 import { menuList } from "constants/menuList";
 
+// This is the Home Page
 function App() {
   return (
     <MainWrap>
