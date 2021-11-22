@@ -10,7 +10,9 @@
 
 [What's included here?](https://github.com/yehezkielgunawan/yehez-shipper-test#-whats-included-here)
 
-[How to use it?](https://github.com/yehezkielgunawan/yehez-shipper-test#-whats-included-here)
+[How to use it?](https://github.com/yehezkielgunawan/yehez-shipper-test#how-to-use-it)
+
+[How to run it locally?](https://github.com/yehezkielgunawan/yehez-shipper-test#how-to-run-it-locally)
 
 [References](https://github.com/yehezkielgunawan/yehez-shipper-test#references)
 
