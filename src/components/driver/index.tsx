@@ -42,9 +42,12 @@ const DriverComponent = () => {
   ) => {
     setUsersLength(
       users.filter((user) =>
-        user.name.first.toLowerCase().includes(searchKey.target.value)
+        user.name.first
+          .toLowerCase()
+          .includes(searchKey.target.value.toLowerCase())
       ).length
     );
+    setPage(1);
     return setKeyword(searchKey.target.value);
   };
 
