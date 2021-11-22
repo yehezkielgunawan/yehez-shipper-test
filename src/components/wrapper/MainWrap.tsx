@@ -7,7 +7,7 @@ type MainProps = {
 
 const MainWrap = ({ children }: MainProps) => {
   return (
-    <Box as="main" px={[3, 1]} py={20} bgColor="gray.50" h="100vh">
+    <Box as="main" px={[3, 1]} py={20} bgColor="gray.50" minH="100vh" maxH="120vh">
       {children}
     </Box>
   );
