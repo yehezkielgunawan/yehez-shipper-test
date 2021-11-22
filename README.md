@@ -14,6 +14,8 @@
 
 [References](https://github.com/yehezkielgunawan/yehez-shipper-test#references)
 
+[Test case check list](https://github.com/yehezkielgunawan/yehez-shipper-test#test-case-check-list)
+
 [Behind the scene story](https://github.com/yehezkielgunawan/yehez-shipper-test#behind-the-scene-story)
 
 ---
