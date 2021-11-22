@@ -9,7 +9,7 @@ function App() {
   return (
     <MainWrap>
       <Stack spacing={4} my={40}>
-        <Heading as="h1" textAlign="center">
+        <Heading as="h1" textAlign="center" color="red">
           DRIVER MANAGEMENT SERVICE
         </Heading>
         <Flex gridGap={4} wrap="wrap" align="center" justify="center">
@@ -21,9 +21,10 @@ function App() {
                     border="2px"
                     leftIcon={<menu.icon />}
                     borderColor="red"
-                    bg="white"
+                    bg="red"
                     size="lg"
                     w="240px"
+                    color="white"
                   >
                     {menu.label}
                   </Button>
