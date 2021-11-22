@@ -17,7 +17,7 @@ const ContainerWrapper = ({ children }: ContainerProps) => {
       <SideBar />
       <SideDrawer isOpen={isOpen} onClose={onClose} />
       <HeaderComponent onOpen={onOpen} />
-      <Box marginLeft={[0, 0, 300]}>{children}</Box>
+      <Box marginLeft={[0, 0, 300]} bg="gray.50" h="100%">{children}</Box>
     </Box>
   );
 };

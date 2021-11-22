@@ -86,28 +86,35 @@ const DriverComponent = () => {
         </Box>
 
         <Flex gridGap={8} direction={["column", "row"]} overflowX="scroll">
-          {(keyword.length < 1
-            ? users
-            : users.filter((user) => {
-                return user.name.first.toLowerCase().includes(keyword);
-              })
-          )
-            .map((user, index) => (
-              <Skeleton isLoaded={user ? true : false} key={index}>
-                <DriverCard
-                  uid={user.login.salt}
-                  firstName={user.name.first}
-                  lastName={user.name.last}
-                  phoneNum={user.phone}
-                  email={user.email}
-                  birthDate={formatDate(user.dob.date, false)}
-                  profileImage={user.picture.medium}
-                />
-              </Skeleton>
-            ))
-            .filter(
-              (user, index) => page * 5 - 5 <= index && index < page * 5 && user
-            )}
+          {usersLength > 0 ? (
+            (keyword.length < 1
+              ? users
+              : users.filter((user) =>
+                  user.name.first.toLowerCase().includes(keyword.toLowerCase())
+                )
+            )
+              .map((user, index) => (
+                <Skeleton isLoaded={user ? true : false} key={index}>
+                  <DriverCard
+                    uid={user.login.salt}
+                    firstName={user.name.first}
+                    lastName={user.name.last}
+                    phoneNum={user.phone}
+                    email={user.email}
+                    birthDate={formatDate(user.dob.date, false)}
+                    profileImage={user.picture.medium}
+                  />
+                </Skeleton>
+              ))
+              .filter(
+                (user, index) =>
+                  page * 5 - 5 <= index && index < page * 5 && user
+              )
+          ) : (
+            <Text textAlign="center" w="100%" py={4}>
+              Data tidak ditemukan atau data sedang kosong.
+            </Text>
+          )}
         </Flex>
 
         <Flex gridGap={4} align="center" justify="center">
