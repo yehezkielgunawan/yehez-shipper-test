@@ -57,6 +57,13 @@ This project is scaffolded using my own starter template at [yehez-vitechakra-st
 - Open the web through your mobile phone? Don't worry the UI will be responsive according to your device width.
   ![Mobile View](https://res.cloudinary.com/yehez/image/upload/v1637574843/Shipper/Mobile_view_zzkpl3.jpg)
 
+## How to run it locally?
+
+- You can `git clone https://github.com/yehezkielgunawan/yehez-shipper-test.git`
+- Don't forget to run `npm install` to install the dependencies
+- To run the dev server, you can run `npm run dev` and open `localhost:3000` in your browser.
+- To build production locally, you can run `npm run build`. And if you want to run it, you can run `npm run preview` and open `localhost:5000` in your browser.
+
 ## References
 
 - [Vite Docs](https://vitejs.dev/) - Learn about Vite and its features
@@ -69,9 +76,7 @@ This project is scaffolded using my own starter template at [yehez-vitechakra-st
 - [x] Each page shows 5 drivers
 - [x] By Clicking the “Next Page” button, show the next 5 users.
 - [x] By Clicking the “Previous Page” button, show the previous 5 users.
-- [x] Disable the pagination buttons according to the user count. For example, when
-      the page first loads, the “Previous Page” button is disabled. When the page shows
-      the last 5 users, the “Next Page” button is disabled.
+- [x] Disable the pagination buttons according to the user count. For example, when the page first loads, the “Previous Page” button is disabled. When the page shows the last 5 users, the “Next Page” button is disabled.
 - [x] Input text “Cari Driver” searches drivers by their first name.
 - [x] Application was deployed to [shipper.yehezgun.com](https://shipper.yehezgun.com) using [Vercel](https://vercel.com/).
 
